@@ -191,7 +191,7 @@ public class Core3CoreServiceControllerTest {
     mockMvc
         .perform(
             MockMvcRequestBuilders.post("/pet/111/uploadImage")
-                .accept(multipart / form - data)
+                .accept("multipart/form-data")
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
         .andExpect(MockMvcResultMatchers.status().is(HttpStatus.OK.value()))
         .andDo(MockMvcResultHandlers.print());

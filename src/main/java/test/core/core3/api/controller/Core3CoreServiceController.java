@@ -231,7 +231,7 @@ public class Core3CoreServiceController {
   /** */
   @PostMapping(
       value = "/pet/{petId}/uploadImage",
-      consumes = {multipart / form - data},
+      consumes = {"multipart/form-data"},
       produces = {MediaType.APPLICATION_JSON_VALUE})
   @ApiOperation(
       value = "uploads an image",
@@ -269,7 +269,7 @@ public class Core3CoreServiceController {
   @ApiOperation(
       value = "Returns pet inventories by status",
       tags = {"store"},
-      response = Object)
+      response = Object.class)
   @ApiResponses({@ApiResponse(code = 200, message = "successful operation")})
   public ResponseEntity<Object> getInventory(
       @ApiIgnore @RequestHeader(required = false) HttpHeaders headers,
@@ -449,7 +449,7 @@ public class Core3CoreServiceController {
   @ApiOperation(
       value = "Logs user into the system",
       tags = {"user"},
-      response = Object)
+      response = Object.class)
   @ApiResponses({
     @ApiResponse(code = 200, message = "successful operation"),
     @ApiResponse(code = 400, message = "Invalid username/password supplied")
