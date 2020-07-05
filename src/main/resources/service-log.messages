@@ -1,0 +1,21 @@
+core3-service.log.message.key.1 = Received request for addPet
+core3-service.log.message.key.2 = Received request for updatePet
+core3-service.log.message.key.3 = Received request for findPetsByStatus
+core3-service.log.message.key.4 = Received request for findPetsByTags
+core3-service.log.message.key.5 = Received request for getPetById
+core3-service.log.message.key.6 = Received request for updatePetWithForm
+core3-service.log.message.key.7 = Received request for deletePet
+core3-service.log.message.key.8 = Received request for uploadFile
+core3-service.log.message.key.9 = Received request for getInventory
+core3-service.log.message.key.10 = Received request for placeOrder
+core3-service.log.message.key.11 = Received request for getOrderById
+core3-service.log.message.key.12 = Received request for deleteOrder
+core3-service.log.message.key.13 = Received request for createUser
+core3-service.log.message.key.14 = Received request for createUsersWithArrayInput
+core3-service.log.message.key.15 = Received request for createUsersWithListInput
+core3-service.log.message.key.16 = Received request for loginUser
+core3-service.log.message.key.17 = Received request for logoutUser
+core3-service.log.message.key.18 = Received request for getUserByName
+core3-service.log.message.key.19 = Received request for updateUser
+core3-service.log.message.key.20 = Received request for deleteUser
+
