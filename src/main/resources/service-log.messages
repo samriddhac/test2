@@ -1,0 +1,6 @@
+core1-service.log.message.key.1 = Received request for getAirports
+core1-service.log.message.key.2 = Received request for postAirports
+core1-service.log.message.key.3 = Received request for getAirport
+core1-service.log.message.key.4 = Received request for putAirport
+core1-service.log.message.key.5 = Received request for deleteAirport
+

@@ -1,0 +1,7 @@
+core1-api.log.message.key.1 = Received request for getAirports
+core1-api.log.message.key.4 = Received request for postAirports
+core1-api.log.message.key.5 = Received request for getAirport
+core1-api.log.message.key.6 = Received request for putAirport
+core1-api.log.message.key.7 = Received request for deleteAirport
+core1-api.log.message.key.2 = Data retrieved
+core1-api.log.message.key.3 = Failed to fetch record
