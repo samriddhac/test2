@@ -20,7 +20,7 @@ public interface ICore3CoreService {
 
   void deletePet(long petId, ServiceRequestContext context);
 
-  ApiResponse uploadFile(long petId, ServiceRequestContext context);
+  ModelApiResponse uploadFile(long petId, ServiceRequestContext context);
 
   Object getInventory(ServiceRequestContext context);
 

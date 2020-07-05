@@ -238,7 +238,7 @@ public class Core3CoreServiceController {
       tags = {"pet"},
       response = ApiResponse.class)
   @ApiResponses({@ApiResponse(code = 200, message = "successful operation")})
-  public ResponseEntity<ApiResponse> uploadFile(
+  public ResponseEntity<ModelApiResponse> uploadFile(
       @ApiParam(value = "ID of pet to update", required = true)
           @PathVariable(value = "petId", required = true)
           long petId,
@@ -250,15 +250,15 @@ public class Core3CoreServiceController {
       @ApiIgnore @RequestParam(required = false) MultiValueMap<String, String> queryParams) {
 
     LOG.info(env.getProperty("core3-api.log.message.key.10"));
-    ApiResponse data =
+    ModelApiResponse data =
         core3CoreService.uploadFile(
             petId, new ServiceRequestContext(headers, pathParams, queryParams));
     if (!Objects.isNull(data)) {
       LOG.info(env.getProperty("core3-api.log.message.key.2"));
-      return new ResponseEntity<ApiResponse>(data, HttpStatus.OK);
+      return new ResponseEntity<ModelApiResponse>(data, HttpStatus.OK);
     } else {
       LOG.info(env.getProperty("core3-api.log.message.key.3"));
-      return new ResponseEntity<ApiResponse>(HttpStatus.NOT_FOUND);
+      return new ResponseEntity<ModelApiResponse>(HttpStatus.NOT_FOUND);
     }
   }
 
