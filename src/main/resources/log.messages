@@ -1,0 +1,13 @@
+test-api.log.message.key.1 = Received request for findSourceAccounts
+test-api.log.message.key.4 = Received request for findTargetAccounts
+test-api.log.message.key.5 = Received request for findAttributes
+test-api.log.message.key.6 = Received request for validateAttributes
+test-api.log.message.key.7 = Received request for findProfiles
+test-api.log.message.key.8 = Received request for createProfile
+test-api.log.message.key.2 = Data retrieved
+test-api.log.message.key.3 = Failed to fetch record
+test-composite-delegator.log.message.key.1 = Invoking findSourceAccounts::04464947-4e5c-4dba-8ac3-1ca7e7cc9713
+test-composite-delegator.log.message.key.2 = Not Invoking findSourceAccounts::04464947-4e5c-4dba-8ac3-1ca7e7cc9713
+abstract-test-composite.log.message.key.1=Invoking service airport-service-1.0
+abstract-test-composite.log.message.key.2=Successfully received response from airport-service-1.0, ServiceData object - 
+abstract-test-composite.log.message.key.3=Error received on invocation of airport-service-1.0, ServiceData object - 

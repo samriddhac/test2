@@ -1,0 +1,314 @@
+swagger: '2.0'
+info:
+  description: api.description
+  version: '1.0'
+  title: transfer-service
+  termsOfService: api.termsOfService
+  contact:
+    name: api.contact.name
+    url: 'http://api.contact.url'
+    email: api@demo.com
+  license:
+    name: api.license.name
+    url: 'http://api.license.url'
+host: '0.0.0.0:13000'
+basePath: /transfer-service/1.0
+schemes:
+  - http
+paths:
+  /accounts/source:
+    post:
+      summary: Find source accounts
+      operationId: FindSourceAccounts
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/TransferInfo'
+      responses:
+        '200':
+          description: All source accounts for user successfully returned
+          schema:
+            $ref: '#/definitions/TransferInfo'
+  /accounts/target:
+    post:
+      summary: Find target accounts
+      operationId: FindTargetAccounts
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/TransferInfo'
+      responses:
+        '200':
+          description: All target accounts for user successfully returned
+          schema:
+            $ref: '#/definitions/TransferInfo'
+  /attributes/find:
+    post:
+      summary: Display fund transfer attributes
+      operationId: FindAttributes
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/TransferInfo'
+      responses:
+        '200':
+          description: All fund transfer attributes successfully returned
+          schema:
+            $ref: '#/definitions/TransferInfo'
+  /attributes/validate:
+    post:
+      summary: Validate fund transfer attributes
+      operationId: ValidateAttributes
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/TransferInfo'
+      responses:
+        '200':
+          description: All fund transfer attributes validated
+          schema:
+            $ref: '#/definitions/TransferInfo'
+  /profiles:
+    get:
+      summary: Find transfer profiles
+      operationId: FindProfiles
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: All transfer profiles successfully returned
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Profile'
+    post:
+      summary: Create transfer profile
+      operationId: CreateProfile
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/TransferInfo'
+      responses:
+        '200':
+          description: Transfer profile created sussessfully
+          schema:
+            $ref: '#/definitions/Profile'
+definitions:
+  Account:
+    type: object
+    required:
+      - id
+      - number
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: The ID of the account
+      number:
+        type: string
+        description: The account number
+    description: Represents an account of the system
+  Customer:
+    type: object
+    required:
+      - id
+      - name
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: The ID of the customer
+      name:
+        type: string
+        description: The name of the customer
+    description: Represents a customer of the system
+  Frequency:
+    type: object
+    required:
+      - description
+      - id
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: The ID of the frequency
+      description:
+        type: string
+        description: The description of the frequency
+    description: Represents an frequency of the system
+  TransferInfo:
+    type: object
+    required:
+      - customer
+      - source_account
+      - source_account_list
+      - target_account
+      - target_account_list
+      - transfer_amount
+      - transfer_date
+      - transfer_frequency
+      - transfer_frequency_list
+      - transfer_scheme
+      - transfer_scheme_list
+      - transfer_type
+      - transfer_type_list
+    properties:
+      customer:
+        $ref: '#/definitions/Customer'
+      source_account:
+        $ref: '#/definitions/Account'
+      source_account_list:
+        type: array
+        items:
+          $ref: '#/definitions/Account'
+      target_account:
+        $ref: '#/definitions/Account'
+      target_account_list:
+        type: array
+        items:
+          $ref: '#/definitions/Account'
+      transfer_type:
+        $ref: '#/definitions/TransferType'
+      transfer_type_list:
+        type: array
+        items:
+          $ref: '#/definitions/TransferType'
+      transfer_scheme:
+        type: string
+        enum:
+          - NOW
+          - SCHEDULED
+      transfer_scheme_list:
+        type: array
+        items:
+          type: string
+          enum:
+            - NOW
+            - SCHEDULED
+      transfer_frequency:
+        $ref: '#/definitions/Frequency'
+      transfer_frequency_list:
+        type: array
+        items:
+          $ref: '#/definitions/Frequency'
+      transfer_amount:
+        type: number
+        format: double
+        minimum: 0.01
+        exclusiveMinimum: false
+      transfer_date:
+        type: string
+        format: date-time
+      transfer_memo:
+        type: string
+    x-className:
+      type: string
+      format: demo.bank.composite.transfer.model.TransferInfo
+  AccountType:
+    type: object
+    required:
+      - description
+      - id
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: The ID of the account type
+      description:
+        type: string
+        description: The description of the account type
+    description: Represents an account type of the system
+  TransferType:
+    type: object
+    required:
+      - description
+      - id
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: The ID of the transfer type
+      description:
+        type: string
+        description: The description of the transfer type
+    description: Represents an transfer type of the system
+  Profile:
+    type: object
+    required:
+      - source_account
+      - target_account
+      - transfer_amount
+      - transfer_date
+      - transfer_frequency
+      - transfer_type
+    properties:
+      id:
+        type: integer
+        format: int32
+      transfer_amount:
+        type: number
+        format: double
+        description: The transfer amount
+        minimum: 0.01
+        exclusiveMinimum: false
+      transfer_date:
+        type: string
+        format: date-time
+        description: The transfer date
+      transfer_memo:
+        type: string
+        description: The transfer memo
+      transfer_type:
+        description: The transfer type details
+        $ref: '#/definitions/TransferType'
+      transfer_frequency:
+        description: The transfer frequency details
+        $ref: '#/definitions/Frequency'
+      target_account:
+        description: The transfer target account details
+        $ref: '#/definitions/Account'
+      source_account:
+        description: The transfer source account details
+        $ref: '#/definitions/Account'
+    description: Represents a Transfer Profile of the system
+    x-className:
+      type: string
+      format: demo.bank.core.instruction.model.Profile
